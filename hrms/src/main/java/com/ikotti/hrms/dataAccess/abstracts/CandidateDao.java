@@ -1,0 +1,10 @@
+package com.ikotti.hrms.dataAccess.abstracts;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.ikotti.hrms.entity.concretes.Candidate;
+
+public interface CandidateDao extends JpaRepository<Candidate, Integer>{
+	Candidate findByNationalIdentity(String nationalIdentity);
+	Candidate findByEmail(String email);
+}
