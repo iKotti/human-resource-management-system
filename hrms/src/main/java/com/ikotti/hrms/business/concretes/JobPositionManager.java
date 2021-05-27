@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ikotti.hrms.business.abstracts.JobPositionControl;
 import com.ikotti.hrms.business.abstracts.JobPositionService;
+import com.ikotti.hrms.core.utilities.results.DataResult;
+import com.ikotti.hrms.core.utilities.results.ErrorResult;
 import com.ikotti.hrms.core.utilities.results.Result;
+import com.ikotti.hrms.core.utilities.results.SuccessDataResult;
 import com.ikotti.hrms.core.utilities.results.SuccessResult;
 import com.ikotti.hrms.dataAccess.abstracts.JobPositionDao;
 import com.ikotti.hrms.entity.concretes.JobPosition;
@@ -16,12 +18,10 @@ import com.ikotti.hrms.entity.concretes.JobPosition;
 public class JobPositionManager implements JobPositionService {
 	
 	private JobPositionDao jobPositionDao;
-	private JobPositionControl jobPositionControl;
 	
 	@Autowired
-	public JobPositionManager(JobPositionDao jobPositionDao,JobPositionControl jobPositionControl) {
+	public JobPositionManager(JobPositionDao jobPositionDao) {
 		this.jobPositionDao = jobPositionDao;
-		this.jobPositionControl = jobPositionControl;
 	}
 
 	@Override
@@ -31,15 +31,23 @@ public class JobPositionManager implements JobPositionService {
 
 	@Override
 	public Result add(JobPosition jobPosition) {
-		Result checkRegisteredTitle = jobPositionControl.checkRegisteredTitle(jobPosition.getTitle());
 		
-		if(!checkRegisteredTitle.isSuccess()) {
-			return checkRegisteredTitle;
+		if(getByTitle(jobPosition.getTitle()).getData() != null) {
+			return new ErrorResult("Bu iş adı zaten kayıtlı.");
 		}
 		
 		jobPositionDao.save(jobPosition);
 		return new SuccessResult("İş adı başarıyla kaydedildi.");
 		
 	}
+
+	@Override
+	public DataResult<JobPosition> getByTitle(String title) {
+		return new SuccessDataResult<JobPosition>(jobPositionDao.findByTitle(title));
+	}
+	
+	
+	
+	
 
 }
