@@ -26,8 +26,6 @@ public class AuthServiceCandidateManager implements AuthServiceCandidate {
 
 	@Override
 	public Result checkNullInput(Candidate candidate) {
-		
-		System.out.println("Ula noli : "+candidateDao.findByNationalIdentity(candidate.getNationalIdentity()));
 
 		if (candidate.getEmail().strip().equals("") || candidate.getPassword().strip().equals("")
 				|| candidate.getFirstName().strip().equals("") || candidate.getLastName().strip().equals("")
