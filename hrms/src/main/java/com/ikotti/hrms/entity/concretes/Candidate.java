@@ -1,6 +1,6 @@
 package com.ikotti.hrms.entity.concretes;
 
-import java.time.LocalDate;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -11,10 +11,12 @@ import com.ikotti.hrms.entity.abstacts.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 
 @Data
+@EqualsAndHashCode(callSuper = false)
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity

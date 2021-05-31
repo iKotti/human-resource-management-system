@@ -40,10 +40,9 @@ public class EmployerVerificationManager implements EmployerVerificationService 
 		Result checkRegisteredEmail = checkRegisteredEmail(employer.getEmail());
 		Result emailValid = emailValid(employer.getEmail(), employer.getCompanyName(), employer.getWebAdress());
 		Result emailConfirmation = emailService.confirmation(employer.getEmail());
-		Result verificateByEmployee = verificationService.verificate(employer);
+		Result confirmedByEmployee = verificationService.verificate(employer);
 
-		Result[] results = { checkNullInput, emailValid, checkRegisteredEmail, emailConfirmation,
-				verificateByEmployee };
+		Result[] results = { checkNullInput, emailValid, checkRegisteredEmail, emailConfirmation, confirmedByEmployee };
 
 		for (Result result : results) {
 			if (!result.isSuccess()) {
