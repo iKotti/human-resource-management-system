@@ -11,7 +11,7 @@
   <li>Back-end kodlaması devam etmektedir.</li>
 </ul>
 <hr>
-HRMS Diagram with Postgre
+HRMS Diagram with PostgreSQL
 <br><br>
 
 ![hrms](https://user-images.githubusercontent.com/58571709/120830215-f1437c80-c566-11eb-87f6-173640244e65.png)
