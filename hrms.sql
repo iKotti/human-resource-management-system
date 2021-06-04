@@ -3,6 +3,63 @@
 BEGIN;
 
 
+CREATE TABLE public.candidate_abilities
+(
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    candidate_id integer NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE public.candidate_educations
+(
+    id integer NOT NULL,
+    department_name character varying(255) NOT NULL,
+    finish_year integer,
+    school_name character varying(255) NOT NULL,
+    start_year integer NOT NULL,
+    candidate_id integer NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE public.candidate_experiences
+(
+    id integer NOT NULL,
+    company_name character varying(255) NOT NULL,
+    finish_date date,
+    "position" character varying(255) NOT NULL,
+    start_date date NOT NULL,
+    candidate_id integer NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE public.candidate_languages
+(
+    id integer NOT NULL,
+    level smallint NOT NULL,
+    candidate_id integer NOT NULL,
+    language_id integer NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE public.candidate_pictures
+(
+    id integer NOT NULL,
+    uploaded_date timestamp without time zone NOT NULL,
+    picture_url character varying(255) NOT NULL,
+    candidate_id integer NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE public.candidate_social_medias
+(
+    id integer NOT NULL,
+    link character varying(255) NOT NULL,
+    candidate_id integer NOT NULL,
+    link_id integer NOT NULL,
+    PRIMARY KEY (id)
+);
+
 CREATE TABLE public.candidates
 (
     id integer NOT NULL,
@@ -11,6 +68,13 @@ CREATE TABLE public.candidates
     birth_date date NOT NULL,
     national_identity character varying(255),
     PRIMARY KEY (id)
+);
+
+CREATE TABLE public.cities
+(
+    city_id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    city_name character varying(60) NOT NULL,
+    PRIMARY KEY (city_id)
 );
 
 CREATE TABLE public.employee_confirms
@@ -47,8 +111,39 @@ CREATE TABLE public.employers
 
 CREATE TABLE public.job_positions
 (
-    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    job_position_id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
     title character varying(255),
+    PRIMARY KEY (job_position_id)
+);
+
+CREATE TABLE public.job_postings
+(
+    job_posting_id integer NOT NULL,
+    application_deadline date NOT NULL,
+    city_id integer NOT NULL,
+    description character varying(255) NOT NULL,
+    job_position_id integer NOT NULL,
+    max_salary double precision NOT NULL,
+    min_salary double precision NOT NULL,
+    number_of_open_position integer NOT NULL,
+    employer_id integer,
+    creation_date date NOT NULL,
+    is_active boolean NOT NULL,
+    job_posting_name character varying(255) NOT NULL,
+    PRIMARY KEY (job_posting_id)
+);
+
+CREATE TABLE public.languages
+(
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE public.link_types
+(
+    id integer NOT NULL,
+    type character varying(255) NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -82,6 +177,54 @@ CREATE TABLE public.verification_codes_employers
     PRIMARY KEY (id)
 );
 
+ALTER TABLE public.candidate_abilities
+    ADD FOREIGN KEY (candidate_id)
+    REFERENCES public.candidates (id)
+    NOT VALID;
+
+
+ALTER TABLE public.candidate_educations
+    ADD FOREIGN KEY (candidate_id)
+    REFERENCES public.candidates (id)
+    NOT VALID;
+
+
+ALTER TABLE public.candidate_experiences
+    ADD FOREIGN KEY (candidate_id)
+    REFERENCES public.candidates (id)
+    NOT VALID;
+
+
+ALTER TABLE public.candidate_languages
+    ADD FOREIGN KEY (candidate_id)
+    REFERENCES public.candidates (id)
+    NOT VALID;
+
+
+ALTER TABLE public.candidate_languages
+    ADD FOREIGN KEY (language_id)
+    REFERENCES public.languages (id)
+    NOT VALID;
+
+
+ALTER TABLE public.candidate_pictures
+    ADD FOREIGN KEY (candidate_id)
+    REFERENCES public.candidates (id)
+    NOT VALID;
+
+
+ALTER TABLE public.candidate_social_medias
+    ADD FOREIGN KEY (candidate_id)
+    REFERENCES public.candidates (id)
+    NOT VALID;
+
+
+ALTER TABLE public.candidate_social_medias
+    ADD FOREIGN KEY (link_id)
+    REFERENCES public.link_types (id)
+    NOT VALID;
+
+
 ALTER TABLE public.candidates
     ADD FOREIGN KEY (id)
     REFERENCES public.users (id)
@@ -91,12 +234,6 @@ ALTER TABLE public.candidates
 ALTER TABLE public.employee_confirms
     ADD FOREIGN KEY (employee_id)
     REFERENCES public.employees (id)
-    NOT VALID;
-
-
-ALTER TABLE public.employee_confirms_employers
-    ADD FOREIGN KEY (id)
-    REFERENCES public.employee_confirms (id)
     NOT VALID;
 
 
@@ -115,6 +252,24 @@ ALTER TABLE public.employees
 ALTER TABLE public.employers
     ADD FOREIGN KEY (id)
     REFERENCES public.users (id)
+    NOT VALID;
+
+
+ALTER TABLE public.job_postings
+    ADD FOREIGN KEY (job_position_id)
+    REFERENCES public.job_positions (job_position_id)
+    NOT VALID;
+
+
+ALTER TABLE public.job_postings
+    ADD FOREIGN KEY (city_id)
+    REFERENCES public.cities (city_id)
+    NOT VALID;
+
+
+ALTER TABLE public.job_postings
+    ADD FOREIGN KEY (employer_id)
+    REFERENCES public.employers (id)
     NOT VALID;
 
 
