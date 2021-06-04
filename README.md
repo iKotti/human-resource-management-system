@@ -14,6 +14,6 @@
 HRMS Diagram with DrawSQL 
 <br><br>
 
-![Screenshot_1](https://user-images.githubusercontent.com/58571709/120123793-9f42d580-c1b9-11eb-91de-31e64ba4eadd.png)
+![hrms](https://user-images.githubusercontent.com/58571709/120830215-f1437c80-c566-11eb-87f6-173640244e65.png)
 
 
