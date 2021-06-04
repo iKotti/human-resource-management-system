@@ -100,7 +100,7 @@ public class CanidateVerificationManager implements CandidateVerificationService
 	}
 
 	public DataResult<Candidate> getByNationalIdentity(String nationalIdentity) {
-		return new SuccessDataResult<Candidate>(candidateDao.findByNationalIdentity(nationalIdentity));
+		return new SuccessDataResult<Candidate>(candidateDao.getByNationalIdentity(nationalIdentity));
 	}
 
 }

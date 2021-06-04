@@ -93,7 +93,7 @@ public class EmployerVerificationManager implements EmployerVerificationService 
 	}
 
 	public DataResult<Employer> getByEmail(String email) {
-		return new SuccessDataResult<Employer>(employerDao.findByEmail(email));
+		return new SuccessDataResult<Employer>(employerDao.getByEmail(email));
 	}
 
 }

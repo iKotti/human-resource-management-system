@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.ikotti.hrms.entity.abstacts.User;
 
 public interface UserDao extends JpaRepository<User, Integer> {
-	User findByEmail(String email);
+	User getByEmail(String email);
 }

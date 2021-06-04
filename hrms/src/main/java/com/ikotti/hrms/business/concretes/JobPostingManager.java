@@ -14,6 +14,7 @@ import com.ikotti.hrms.core.utilities.results.SuccessDataResult;
 import com.ikotti.hrms.core.utilities.results.SuccessResult;
 import com.ikotti.hrms.dataAccess.abstracts.JobPostingDao;
 import com.ikotti.hrms.entity.concretes.JobPosting;
+import com.ikotti.hrms.entity.dtos.JobPostingListDto;
 
 @Service
 public class JobPostingManager implements JobPostingService {
@@ -26,8 +27,8 @@ public class JobPostingManager implements JobPostingService {
 	}
 
 	@Override
-	public DataResult<List<JobPosting>> getAll() {
-		return new SuccessDataResult<List<JobPosting>>(jobPostingDao.findAll(), "İş ilanları listelendi.");
+	public DataResult<List<JobPostingListDto>> getAll() {
+		return new SuccessDataResult<List<JobPostingListDto>>(this.jobPostingDao.getJobPostingList(),"Tüm iş ilanları listelendi.");
 	}
 
 	@Override
@@ -59,4 +60,11 @@ public class JobPostingManager implements JobPostingService {
 		jobPostingDao.save(updateJobPosting);
 		return new SuccessResult("İş ilanının aktiflik durumu güncellendi.");
 	}
+
+	@Override
+	public DataResult<List<JobPostingListDto>> getJobPostingList() {
+		return new SuccessDataResult<List<JobPostingListDto>>(this.jobPostingDao.getJobPostingList());
+	}
+	
+	
 }

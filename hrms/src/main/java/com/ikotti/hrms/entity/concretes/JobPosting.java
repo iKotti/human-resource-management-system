@@ -31,12 +31,16 @@ public class JobPosting {
 	@JoinColumn(name = "job_position_id")
 	private JobPosition jobPosition;
 
-	@Column(name = "description")
-	private String description;
-
 	@ManyToOne()
 	@JoinColumn(name = "city_id")
 	private City city;
+	
+	@ManyToOne()
+	@JoinColumn(name = "employer_id")
+	private Employer employer;
+
+	@Column(name = "description")
+	private String description;
 
 	@Column(name = "min_salary")
 	private double minSalary;
@@ -52,12 +56,11 @@ public class JobPosting {
 	
 	@Column(name = "creation_date")
 	private Date creationDate;
-
-	@ManyToOne()
-	@JoinColumn(name = "employer_id")
-	private Employer employer;
 	
 	@Column(name="is_active")
 	private Boolean activationStatus;
+	
+	@Column(name="job_posting_name")
+	private String jobPostingName;
 
 }

@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ikotti.hrms.business.abstracts.JobPostingService;
 import com.ikotti.hrms.core.utilities.results.DataResult;
 import com.ikotti.hrms.core.utilities.results.Result;
-import com.ikotti.hrms.core.utilities.results.SuccessDataResult;
 import com.ikotti.hrms.entity.concretes.JobPosting;
+import com.ikotti.hrms.entity.dtos.JobPostingListDto;
 
 @RestController
 @RequestMapping("/api/jobpostings")
@@ -26,8 +26,8 @@ public class JobPostingController {
 	}
 	
 	@GetMapping("/getall")
-	public DataResult<List<JobPosting>> getAll(){
-		return jobPostingService.getAll();
+	public DataResult<List<JobPostingListDto>> getAll() {
+		return jobPostingService.getJobPostingList();
 	}
 	
 	@PostMapping("/add")
@@ -49,6 +49,11 @@ public class JobPostingController {
 	@PostMapping("/updateJobPostingActivation")
 	public Result updateJobPostingActivation(@RequestParam int id, Boolean activationStatus) {
 		return jobPostingService.updateJobPostingActivation(id, activationStatus);
+	}
+	
+	@GetMapping("/getJobPostingList")
+	public DataResult<List<JobPostingListDto>> getJobPostingList() {
+		return jobPostingService.getJobPostingList();
 	}
 
 
