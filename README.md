@@ -18,7 +18,7 @@ HRMS Diagram with PostgreSQL
 
 UML Component Diagram
 <br><br>
-![ww](https://user-images.githubusercontent.com/58571709/121088956-22ce7900-c7ef-11eb-8a2d-22fe08bd401b.jpg)
+![Untitled Workspace](https://user-images.githubusercontent.com/58571709/121089271-93759580-c7ef-11eb-94d5-a30dc9bcbd8e.png)
 
 
 
