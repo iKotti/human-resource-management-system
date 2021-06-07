@@ -1,0 +1,11 @@
+.ui.segment{
+    border-radius: 0 !important;
+}
+
+.ui.main.container{
+    margin-top: 3em;
+}
+
+.mb-2{
+    margin-bottom: 2em !important;
+}
