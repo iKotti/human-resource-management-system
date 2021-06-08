@@ -7,17 +7,21 @@ export default function Navbar() {
       <Segment inverted>
         <Menu inverted>
           <Container>
-            <Menu.Item name="icon"> <Icon name='suitcase' size='large' /> HRMS </Menu.Item>
-            <Menu.Item name="Anasayfa" />
+            <Menu.Item name="icon">
+              <Icon name="suitcase" size="large" /> HRMS{" "}
+            </Menu.Item>
             <Menu.Item name="İş İlanları" />
             <Menu.Item name="İş Pozisyonları" />
 
             <Menu.Menu position="right">
-              <Button.Group position="right">
-                <Button>Giriş Yap</Button>
-                <Button.Or />
-                <Button positive>Kayıt Ol</Button>
-              </Button.Group>
+            <button class="ui small gray button">
+                <i class="icon user"></i>
+                Giriş Yap
+              </button>
+              <button class="ui small green button">
+                <i class="icon user plus "></i>
+                Kayıt Ol
+              </button>
             </Menu.Menu>
           </Container>
         </Menu>

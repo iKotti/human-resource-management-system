@@ -1,17 +1,18 @@
 import "./App.css";
 import "semantic-ui-css/semantic.min.css";
 import Navbar from "./layout/Navbar";
-import { Container } from "semantic-ui-react";
-import Dashboard from "./layout/Dashboard";
+import HomeDashboard from "./layout/HomeDashboard";
+import Footer from "./layout/Footer";
+import Login from "./pages/Login";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
 
-      <Container className="main">
-        <Dashboard></Dashboard>
-      </Container>
+      <Navbar/>
+      {/* <Login/> */}
+      <HomeDashboard/>
+      <Footer/>
     </div>
   );
 }

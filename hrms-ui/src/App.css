@@ -1,11 +1,88 @@
-.ui.segment{
-    border-radius: 0 !important;
+/* BASE CSS */
+
+.mb-1 {
+  margin-bottom: 1em !important;
+}
+.mb-2 {
+  margin-bottom: 2em !important;
 }
 
-.ui.main.container{
-    margin-top: 3em;
+/* CHANGED UI ELEMENTS*/
+
+/*Cards*/
+.ui.card > .content > .header:not(.ui),
+.ui.cards > .card > .content > .header:not(.ui),
+.ui.card .meta,
+.ui.cards > .card .meta {
+  margin-bottom: 7px;
 }
 
-.mb-2{
-    margin-bottom: 2em !important;
+.ui.green.button,
+.ui.green.buttons .button i {
+  font-size: 2rem;
+}
+
+.ui.cards > .blue.card,
+.ui.blue.card,
+.ui.blue.cards > .card {
+  box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #003a61, 0 1px 3px 0 #d4d4d5 !important;
+}
+
+/*Segments*/
+.ui.segment {
+  border-radius: 0 !important;
+}
+
+/*Container*/
+.ui.main.container {
+  margin-top: 0em;
+}
+
+/* SEARCH CONTAINER CSS*/
+
+.searchContainer {
+  background-color: #003a61;
+  padding: 2rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.searchContainer h2 {
+  color: #fff !important;
+  margin-bottom: 2rem !important;
+}
+
+.ui.input {
+  height: 4rem;
+  width: 40%;
+  margin-right: 4em;
+}
+
+/*AUTH PAGE CSS*/
+
+.auth{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5%;
+}
+
+.authContainer {
+  padding: 2em;
+  border: 1px solid #003a61;
+  border-radius: 5px;
+  width: 32%;
+}
+
+.authContainer h1 {
+  text-align: center;
+  color: #003a61;
+}
+
+
+
+/* FOOTER CSS*/
+.footer {
+  margin-top: 5em !important;
+  padding: 5em 0em !important;
 }

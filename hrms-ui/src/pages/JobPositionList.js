@@ -15,7 +15,7 @@ export default function JobPositionList() {
 
   return (
     <div>
-      <h4>İş Alanları</h4>
+      <h4>İş Pozisyonları</h4>
       <Table color="blue" className="mb-2">
         <Table.Header>
           <Table.Row>
