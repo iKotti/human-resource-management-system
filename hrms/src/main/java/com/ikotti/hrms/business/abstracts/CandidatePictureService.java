@@ -10,6 +10,8 @@ import com.ikotti.hrms.entity.concretes.CandidatePicture;
 
 public interface CandidatePictureService {
 	Result add(int candidateId, MultipartFile file);
+	
+	Result addAll(List<CandidatePicture> candidatePictures,int candidateId);
 
 	DataResult<List<CandidatePicture>> getAll();
 

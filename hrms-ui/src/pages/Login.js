@@ -6,21 +6,21 @@ export default function Login() {
       <div className="authContainer">
           <h1> <i className="user icon"></i> GİRİŞ YAP </h1>
         <form className="ui form">
-        <div class="field">
+        <div className="field">
             <label>Email</label>
             <input type="email" name="email" placeholder="Email" />
           </div>
-          <div class="field">
+          <div className="field">
             <label>Parola</label>
             <input type="password" name="password" placeholder="Şifre" />
           </div>
 
-          <div class="field">
+          <div className="field">
           <a href="/#">Şifrenizi mi unuttunuz?</a>
-            <div class="ui checkbox">
+            <div className="ui checkbox">
             </div>
           </div>
-          <button class="ui blue button" type="submit">
+          <button className="ui blue button" type="submit">
             Giriş Yap
           </button>
         </form>

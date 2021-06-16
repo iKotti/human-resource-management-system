@@ -1,5 +1,6 @@
 package com.ikotti.hrms.business.concretes;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
@@ -43,13 +44,21 @@ public class CandidatePictureManager implements CandidatePictureService{
         String url = result.get("url");
         candidatePicture.setUrl(url);
         
-        candidatePicture.setUploadedDate(LocalDateTime.now());
+        candidatePicture.setUploadedDate(LocalDate.now());
     	
         this.candidatePictureDao.save(candidatePicture);
         return new SuccessResult();
     }
-
+    
     @Override
+	public Result addAll(List<CandidatePicture> candidatePictures, int candidateId) {
+    	Candidate candidate = candidateDao.getById(candidateId);
+    	candidatePictures.forEach(candidatePicture -> candidatePicture.setCandidate(candidate));
+		candidatePictureDao.saveAll(candidatePictures);
+		return new SuccessResult();
+	}
+
+	@Override
     public DataResult<List<CandidatePicture>> getAll() {
         return new SuccessDataResult<>(candidatePictureDao.findAll());
     }
@@ -58,5 +67,6 @@ public class CandidatePictureManager implements CandidatePictureService{
     public DataResult<List<CandidatePicture>> getAllByCandidateId(int candidateId) {
         return new SuccessDataResult<>(candidatePictureDao.getAllByCandidateId(candidateId));
     }
+    
 
 }

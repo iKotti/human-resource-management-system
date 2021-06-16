@@ -2,6 +2,7 @@ package com.ikotti.hrms.api.controllers;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +16,7 @@ import com.ikotti.hrms.entity.concretes.Employee;
 
 @RestController
 @RequestMapping("/api/employees")
+@CrossOrigin
 public class EmployeeController {
 	
 	private EmployeeService employeeService;

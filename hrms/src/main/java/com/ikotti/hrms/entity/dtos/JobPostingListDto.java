@@ -1,5 +1,6 @@
 package com.ikotti.hrms.entity.dtos;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -10,9 +11,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class JobPostingListDto {
+	private int id;
 	private String companyName;
 	private String jobPostingName;
 	private int numberOfOpenPosition;
-	private Date creationDate;
-	private Date applicationDeadline;
+	private LocalDate creationDate;
+	private LocalDate applicationDeadline;
+	private String description;
 }

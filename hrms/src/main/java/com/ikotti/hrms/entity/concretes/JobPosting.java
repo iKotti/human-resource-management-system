@@ -1,5 +1,6 @@
 package com.ikotti.hrms.entity.concretes;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -52,10 +53,10 @@ public class JobPosting {
 	private int numberOfOpenPosition;
 
 	@Column(name = "application_deadline")
-	private Date applicationDeadline;
+	private LocalDate applicationDeadline;
 	
 	@Column(name = "creation_date")
-	private Date creationDate;
+	private LocalDate creationDate;
 	
 	@Column(name="is_active")
 	private Boolean activationStatus;

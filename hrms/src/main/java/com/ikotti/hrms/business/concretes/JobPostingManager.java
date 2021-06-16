@@ -65,6 +65,11 @@ public class JobPostingManager implements JobPostingService {
 	public DataResult<List<JobPostingListDto>> getJobPostingList() {
 		return new SuccessDataResult<List<JobPostingListDto>>(this.jobPostingDao.getJobPostingList());
 	}
+
+	@Override
+	public DataResult<JobPosting> getById(int id) {
+		return new SuccessDataResult<JobPosting>(jobPostingDao.getById(id));
+	}
 	
 	
 }

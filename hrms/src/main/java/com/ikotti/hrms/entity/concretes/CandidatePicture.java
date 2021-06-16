@@ -1,5 +1,6 @@
 package com.ikotti.hrms.entity.concretes;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -41,6 +42,6 @@ public class CandidatePicture {
     private String url;
 
     @Column(name="uploaded_date")
-    private LocalDateTime uploadedDate;
+    private LocalDate uploadedDate;
 
 }

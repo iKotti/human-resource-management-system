@@ -1,6 +1,6 @@
 package com.ikotti.hrms.entity.concretes;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -31,7 +31,7 @@ public class Candidate extends User {
 	private String lastName;
 
 	@Column(name = "birth_date")
-	private Date birthDate;
+	private LocalDate birthDate;
 
 	@Column(name = "national_identity")
 	private String nationalIdentity;

@@ -9,7 +9,7 @@ import com.ikotti.hrms.entity.dtos.JobPostingListDto;
 
 public interface JobPostingService {
 	DataResult<List<JobPostingListDto>> getAll();
-
+	
 	Result add(JobPosting jobPosting);
 	
 	DataResult<List<JobPosting>> getSortedByCreationDate();
@@ -20,5 +20,5 @@ public interface JobPostingService {
 	
 	DataResult<List<JobPostingListDto>> getJobPostingList();
 	
-
+	DataResult<JobPosting> getById(int id);
 }

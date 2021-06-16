@@ -31,4 +31,5 @@ public class CurriculumVitaeDto {
 	private List<@Valid CandidateExperience> candidateExperinces;
 	private List<@Valid CandidateSocialMedia> candidateSocialMedias;
 	private List<@Valid CandidateLanguage> candidateLanguages;
+	private List<@Valid CandidatePicture> candidatePictures;
 }

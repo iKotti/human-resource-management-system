@@ -2,6 +2,7 @@ package com.ikotti.hrms.api.controllers;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +18,7 @@ import com.ikotti.hrms.entity.dtos.JobPostingListDto;
 
 @RestController
 @RequestMapping("/api/jobpostings")
+@CrossOrigin
 public class JobPostingController {
 	
 	private JobPostingService jobPostingService;
@@ -33,7 +35,6 @@ public class JobPostingController {
 	@PostMapping("/add")
 	public Result add(@RequestBody JobPosting jobPosting) {
 		return jobPostingService.add(jobPosting);
-		
 	}
 	
 	@PostMapping("/getSortedByCreationDate")
@@ -55,6 +56,9 @@ public class JobPostingController {
 	public DataResult<List<JobPostingListDto>> getJobPostingList() {
 		return jobPostingService.getJobPostingList();
 	}
-
-
+	
+	@GetMapping("/getById")
+	public DataResult<JobPosting> getById(@RequestParam int id) {
+		return jobPostingService.getById(id);
+	}
 }

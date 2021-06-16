@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import JobPostingService from "../services/JobPostingService";
+import { Link } from "react-router-dom";
 
 export default function JobPostingList() {
   const [jobPostings, setJobPostings] = useState([]);
@@ -14,16 +15,13 @@ export default function JobPostingList() {
   return (
     <div>
       <h4> İş İlanları </h4>
-      <div class="ui cards">
+      <div className="ui cards">
         {jobPostings.map((jobPosting) => (
           <div className="ui blue card">
             <div className="content">
               <div className="header">{jobPosting.jobPostingName}</div>
-
               <div className="meta">
-                <span className="right floated time">
-                  
-                </span>
+                <span className="right floated time"></span>
                 <p className="company">
                   <i className="building icon"></i> {jobPosting.companyName}
                 </p>
@@ -33,14 +31,16 @@ export default function JobPostingList() {
               </div>
             </div>
             <div className="extra content">
-              <div className="left centered author">
-                <div class="ui animated small blue button" tabindex="0">
-                  <div class="visible content">Görüntüle</div>
-                  <div class="hidden content">
-                    <i class="right arrow icon"></i>
+              <Link to={`/jobpostings/${jobPosting.id}`}> 
+                <div className="left centered author">
+                  <div className="ui animated small blue button" tabindex="0">
+                    <div className="visible content">Görüntüle</div>
+                    <div className="hidden content">
+                      <i className="right arrow icon"></i>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             </div>
           </div>
         ))}

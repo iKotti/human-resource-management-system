@@ -11,7 +11,9 @@ import com.ikotti.hrms.business.abstracts.CandidateLanguageService;
 import com.ikotti.hrms.business.abstracts.CandidatePictureService;
 import com.ikotti.hrms.business.abstracts.CandidateSocialMediaService;
 import com.ikotti.hrms.business.abstracts.CurriculumVitaeService;
+import com.ikotti.hrms.core.utilities.results.DataResult;
 import com.ikotti.hrms.core.utilities.results.Result;
+import com.ikotti.hrms.core.utilities.results.SuccessDataResult;
 import com.ikotti.hrms.core.utilities.results.SuccessResult;
 import com.ikotti.hrms.dataAccess.abstracts.CandidateDao;
 import com.ikotti.hrms.entity.concretes.Candidate;
@@ -33,7 +35,6 @@ public class CurriculumVitaeManager implements CurriculumVitaeService {
 			CandidateEducationService candidateEducationService, CandidateExperienceService candidateExperienceService,
 			CandidateLanguageService candidateLanguageService, CandidateSocialMediaService candidateSocialMediaService,
 			CandidatePictureService candidatePictureService) {
-		super();
 		this.candidateDao = candidateDao;
 		this.candidateAbilityService = candidateAbilityService;
 		this.candidateEducationService = candidateEducationService;
@@ -69,7 +70,9 @@ public class CurriculumVitaeManager implements CurriculumVitaeService {
 				.forEach(candidateSocialMedia -> candidateSocialMedia.setCandidate(candidate));
 		candidateSocialMediaService.addAll(curriculumVitaeDto.getCandidateSocialMedias(), candidateId);
 		
+		curriculumVitaeDto.getCandidatePictures().forEach(candidatePicture->candidatePicture.setCandidate(candidate));
+		candidatePictureService.addAll(curriculumVitaeDto.getCandidatePictures(), candidateId);
+		
 		return new SuccessResult("CV Başarıyla Kaydedildi.");
 	}
-
 }

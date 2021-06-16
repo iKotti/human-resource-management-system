@@ -8,21 +8,21 @@ export default function SearchBar() {
         <Container>
         <h2> HRMS Sistemine hoşgeldin, hemen kendine uygun iş ilanlarına ulaşabilirsin. </h2>
         <form>
-        <div class="ui icon input">
+        <div className="ui icon input">
           <input
-            class="prompt"
+            className="prompt"
             type="text"
             placeholder="İş pozisyonları arasında ara..."
           ></input>
-          <i class="search icon"></i>
+          <i className="search icon"></i>
         </div>
-        <div class="ui icon input">
+        <div className="ui icon input">
           <input
-            class="prompt"
+            className="prompt"
             type="text"
             placeholder="Şehir adı..."
           ></input>
-          <i class="search icon"></i>
+          <i className="search icon"></i>
         </div>
       </form>
         </Container>
