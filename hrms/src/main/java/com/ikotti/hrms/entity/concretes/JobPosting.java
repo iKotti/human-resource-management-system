@@ -1,7 +1,6 @@
 package com.ikotti.hrms.entity.concretes;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,18 +27,6 @@ public class JobPosting {
 	@Column(name = "job_posting_id")
 	private int id;
 
-	@ManyToOne()
-	@JoinColumn(name = "job_position_id")
-	private JobPosition jobPosition;
-
-	@ManyToOne()
-	@JoinColumn(name = "city_id")
-	private City city;
-	
-	@ManyToOne()
-	@JoinColumn(name = "employer_id")
-	private Employer employer;
-
 	@Column(name = "description")
 	private String description;
 
@@ -63,5 +50,25 @@ public class JobPosting {
 	
 	@Column(name="job_posting_name")
 	private String jobPostingName;
+	
+	@ManyToOne()
+	@JoinColumn(name = "job_position_id")
+	private JobPosition jobPosition;
+
+	@ManyToOne()
+	@JoinColumn(name = "city_id")
+	private City city;
+	
+	@ManyToOne()
+	@JoinColumn(name = "employer_id")
+	private Employer employer;
+	
+	@ManyToOne()
+	@JoinColumn(name = "working_place_type")
+	private WorkingPlaceType workingPlaceType;
+	
+	@ManyToOne()
+	@JoinColumn(name = "working_time_type")
+	private WorkingTimeType workingTimeType;
 
 }
