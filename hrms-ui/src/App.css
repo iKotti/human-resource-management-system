@@ -38,9 +38,6 @@
   margin-top: 0em;
 }
 
-/* NAVBAR CSS */
-
-
 
 /* SEARCH CONTAINER CSS*/
 
@@ -81,6 +78,13 @@
 .authContainer h1 {
   text-align: center;
   color: #003a61;
+}
+
+/* FORM CSS */
+
+label{
+  display: block;
+  margin-bottom: 5px;
 }
 
 

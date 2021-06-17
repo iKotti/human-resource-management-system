@@ -9,7 +9,7 @@ export default function JobPositionList() {
     let jobPositionService = new JobPositionService();
 
     jobPositionService
-      .getJobPosition()
+      .getJobPositions()
       .then((result) => setJobPositions(result.data));
   });
 

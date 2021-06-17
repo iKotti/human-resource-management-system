@@ -1,12 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Dropdown, Image } from "semantic-ui-react";
 
 export default function SignedIn({ signOut }) {
   return (
     <div>
-      <button className="ui small primary button" style={{marginRight:"1.3em"}}>
+      <Link className="ui small primary button" to="/addjobposting" style={{marginRight:"1.3em"}}>
         İlan Ekle
-      </button>
+      </Link>
       <Image
         avatar
         spaced="right"

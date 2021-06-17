@@ -17,7 +17,7 @@ export default function JobPostingList() {
       <h4> İş İlanları </h4>
       <div className="ui cards">
         {jobPostings.map((jobPosting) => (
-          <div className="ui blue card">
+          <div className="ui blue card" key={jobPosting.id}>
             <div className="content">
               <div className="header">{jobPosting.jobPostingName}</div>
               <div className="meta">
@@ -33,7 +33,7 @@ export default function JobPostingList() {
             <div className="extra content">
               <Link to={`/jobpostings/${jobPosting.id}`}> 
                 <div className="left centered author">
-                  <div className="ui animated small blue button" tabindex="0">
+                  <div className="ui animated small blue button" tabIndex="0">
                     <div className="visible content">Görüntüle</div>
                     <div className="hidden content">
                       <i className="right arrow icon"></i>
