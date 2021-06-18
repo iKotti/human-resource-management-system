@@ -28,8 +28,8 @@ public class JobPostingController {
 	}
 	
 	@GetMapping("/getall")
-	public DataResult<List<JobPostingListDto>> getAll() {
-		return jobPostingService.getJobPostingList();
+	public DataResult<List<JobPosting>> getAll() {
+		return jobPostingService.getAll();
 	}
 	
 	@PostMapping("/add")
@@ -60,5 +60,10 @@ public class JobPostingController {
 	@GetMapping("/getById")
 	public DataResult<JobPosting> getById(@RequestParam int id) {
 		return jobPostingService.getById(id);
+	}
+	
+	@GetMapping("/getByIsConfirmed")
+	public DataResult<List<JobPosting>> getByIsConfirm(@RequestParam Boolean isConfirm) {
+		return jobPostingService.getByIsConfirm(isConfirm);
 	}
 }

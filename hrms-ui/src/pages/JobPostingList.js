@@ -9,9 +9,11 @@ export default function JobPostingList() {
     let jobPostingService = new JobPostingService();
 
     jobPostingService
-      .getJobPostings()
+      .getByIsConfirmTrue()
       .then((result) => setJobPostings(result.data.data));
-  });
+
+    console.log(jobPostings)
+  },[]);
   return (
     <div>
       <h4> İş İlanları </h4>

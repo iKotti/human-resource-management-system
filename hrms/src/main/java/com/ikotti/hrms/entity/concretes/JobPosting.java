@@ -43,13 +43,16 @@ public class JobPosting {
 	private LocalDate applicationDeadline;
 	
 	@Column(name = "creation_date")
-	private LocalDate creationDate;
+	private LocalDate creationDate = LocalDate.now();
 	
 	@Column(name="is_active")
 	private Boolean activationStatus;
 	
 	@Column(name="job_posting_name")
 	private String jobPostingName;
+	
+	@Column(name="is_confirm")
+	private Boolean isConfirm;
 	
 	@ManyToOne()
 	@JoinColumn(name = "job_position_id")

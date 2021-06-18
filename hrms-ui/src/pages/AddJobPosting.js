@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from "react";
 import JobPositionService from "../services/JobPositionService";
+import JobPostingService from "../services/JobPostingService";
 import CityService from "../services/CityService";
 import WorkingPlaceTypeService from "../services/WorkingPlaceTypeService";
 import WorkingTimeTypeService from "../services/WorkingTimeTypeService";
 
-import {
-  Button,
-  Container,
-  Form,
-  Grid,
-} from "semantic-ui-react";
+import { Button, Container, Form, Grid } from "semantic-ui-react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 export default function AddJobPosting() {
+  let jobPostingService = new JobPostingService();
+
   const [jobPositions, setJobPositions] = useState([]);
   const [cities, setCities] = useState([]);
   const [workingPlaceTypes, setWorkingPlaceTypes] = useState([]);
@@ -49,40 +47,68 @@ export default function AddJobPosting() {
     dirty,
     isSubmitting,
     handleSubmit,
-    handleReset,
     handleChange,
     handleBlur,
+    touched
   } = useFormik({
     initialValues: {
-      advertTitle: "",
+      jobPostingName: "",
       description: "",
+      numberOfOpenPosition: "",
+      jobPositionId: "",
+      cityId: "",
+      workingPlaceTypeId: "",
+      workingTimeTypeId: "",
+      applicationDeadline: "",
+      maxSalary: "",
+      minSalary: "",
+      employerId: 81,
+    },
+
+    onSubmit: (values,{resetForm,setSubmitting}) => {
+      let jobPosting = {
+        applicationDeadline: values.applicationDeadline,
+        city: { cityId: values.cityId },
+        description: values.description,
+        employer: { id: values.employerId },
+        jobPosition: { jobPositionId: values.jobPositionId },
+        jobPostingName: values.jobPostingName,
+        minSalary: values.minSalary,
+        maxSalary: values.maxSalary,
+        numberOfOpenPosition: values.numberOfOpenPosition,
+        workingPlaceType: { workingPlaceTypeId: values.workingPlaceTypeId },
+        workingTimeType: { workingTimeTypeId: values.workingTimeTypeId },
+        isConfirm: false,
+        activationStatus: true,
+      };
+
+      jobPostingService.add(jobPosting);
+      setTimeout(()=>{
+        resetForm();
+        setSubmitting(false);
+      },1000);
     },
 
     validationSchema: Yup.object({
-      advertTitle: Yup.string().required("İlan başlığı zorunludur."),
+      jobPostingName: Yup.string().required("İlan başlığı zorunludur."),
       description: Yup.string().required("Açıklama  zorunludur."),
       numberOfOpenPosition: Yup.string().required("Eleman sayısı giriniz."),
-      jobPosition: Yup.number().required("Bir pozisyon seçiniz."),
-      city: Yup.number().required("Bir şehir seçiniz. "),
-      workingPlaceType: Yup.number().required("Bir çalışma yeri seçiniz."),
-      workingTimeType: Yup.number().required("Bir çalışma zamanı seçiniz."),
+      jobPositionId: Yup.number().required("Bir pozisyon seçiniz."),
+      cityId: Yup.number().required("Bir şehir seçiniz. "),
+      workingPlaceTypeId: Yup.number().required("Bir çalışma yeri seçiniz."),
+      workingTimeTypeId: Yup.number().required("Bir çalışma zamanı seçiniz."),
       applicationDeadline: Yup.date().required("Son başvuru tarihi seçiniz."),
-      maxSalary : Yup.number().required("Maksimum maaş değerini giriniz."),
-      minSalary : Yup.number().required("Minimum maaş değerini giriniz."),
-
+      maxSalary: Yup.number().required("Maksimum maaş değerini giriniz."),
+      minSalary: Yup.number().required("Minimum maaş değerini giriniz."),
     }),
-
-    onSubmit: (formData) => {
-      console.log(formData);
-    },
   });
 
-  ///////////////////////////////////////////////
+  //////////////////// OPTIONS //////////////////////////////
 
   const jobPositonOptions = jobPositions.map((jobPosition) => ({
-    key: jobPosition.id,
+    key: jobPosition.jobPositionId,
     text: jobPosition.title,
-    value: jobPosition.id,
+    value: jobPosition.jobPositionId,
   }));
 
   const cityOptions = cities.map((city) => ({
@@ -92,16 +118,16 @@ export default function AddJobPosting() {
   }));
 
   const workingPlaceTypeOptions = workingPlaceTypes.map((workingPlaceType) => ({
-    key: workingPlaceType.id,
+    key: workingPlaceType.workingPlaceTypeId,
     text: workingPlaceType.workingPlaceName,
-    value: workingPlaceType.id,
+    value: workingPlaceType.workingPlaceTypeId,
   }));
 
-  const workingTimeTypeOptions = workingTimeTypes.map(workingTimeType=>({
-      key:workingTimeType.id,
-      text:workingTimeType.workingTimeName,
-      value:workingTimeType.id
-  }))
+  const workingTimeTypeOptions = workingTimeTypes.map((workingTimeType) => ({
+    key: workingTimeType.workingTimeTypeId,
+    text: workingTimeType.workingTimeName,
+    value: workingTimeType.workingTimeTypeId,
+  }));
 
   return (
     <Container>
@@ -111,11 +137,11 @@ export default function AddJobPosting() {
           <Grid.Row>
             <Grid.Column width="14">
               <Form.Input
-                id="advertTitle"
+                id="jobPostingName"
                 type="text"
                 label="İlan Başlığı"
-                value={values.advertTitle}
-                error={errors.advertTitle}
+                value={values.jobPostingName}
+                error={touched.minSalary && errors.jobPostingName }
                 onChange={handleChange}
               ></Form.Input>
             </Grid.Column>
@@ -124,118 +150,123 @@ export default function AddJobPosting() {
           <Grid.Row>
             <Grid.Column width="7">
               <Form.Select
-                id="jobPosition"
+                id="jobPositionId"
                 onChange={(fieldName, data) =>
-                  setFieldValue("jobPosition", data.value)
+                  setFieldValue("jobPositionId", data.value)
                 }
-                value={values.jobPosition}
+                onBlur={onBlur}
+                value={values.jobPositionId}
                 options={jobPositonOptions}
                 label="Pozisyon"
                 placeholder="Pozisyon Seçiniz"
                 search
                 selection
-                error={errors.jobPosition}
+                error={touched.jobPositionId && errors.jobPositionId}
               ></Form.Select>
 
               <Form.Input
                 id="applicationDeadline"
                 type="date"
                 label="Son Başvuru Tarihi"
-                error={errors.applicationDeadline}
+                error={touched.applicationDeadline && errors.applicationDeadline }
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.applicationDeadline}
-                fluid
               ></Form.Input>
 
               <Form.Input
+                id="minSalary"
                 type="number"
                 placeholder="Örn: 3000"
-                id="minSalary"
                 label="Minimum Maaş"
+                value={values.minSalary}
                 onChange={handleChange}
-                error={errors.minSalary}
+                error={touched.minSalary && errors.minSalary}
+                onBlur={handleBlur}
               />
               <Form.Select
-                id="workingTimeType"
+                id="workingTimeTypeId"
                 label="Çalışma Zamanı"
-                onChange={(fieldName, data) =>
-                    setFieldValue("workingTimeType", data.value)
-                  }
-                  onBlur={onBlur}
-                  value={values.workingTimeType}
-                  options={workingTimeTypeOptions}
-                  placeholder="Çalışma Zamanı Seçiniz"
-                  search
-                  selection
-                  error={errors.workingTimeType}
+                onChange={(event, data) =>
+                  setFieldValue("workingTimeTypeId", data.value)
+                }
+                onBlur={onBlur}
+                value={values.workingTimeTypeId}
+                options={workingTimeTypeOptions}
+                placeholder="Çalışma Zamanı Seçiniz"
+                search
+                selection
+                error={touched.workingTimeTypeId && errors.workingTimeTypeId}
               ></Form.Select>
             </Grid.Column>
 
             <Grid.Column width="7">
               <Form.Select
-                id="city"
+                id="cityId"
                 onBlur={onBlur}
-                value={values.cities}
+                value={values.cityId}
                 options={cityOptions}
-                onChange={(fieldName, data) =>
-                    setFieldValue("city", data.value)
-                  }
+                onChange={(event, data) => setFieldValue("cityId", data.value)}
                 label="Şehir"
                 placeholder="Şehir Seçiniz"
                 search
                 selection
-                error={errors.city}
+                error={touched.cityId && errors.cityId}
               ></Form.Select>
 
               <Form.Input
-                type="text"
+                id="numberOfOpenPosition"
+                type="number"
                 placeholder="Örn:1,2,3"
-                name="numberOfOpenPosition"
                 label="Alınacak Eleman Sayısı"
                 onChange={handleChange}
-                error={errors.numberOfOpenPosition}
+                onBlur={handleBlur}
+                error={touched.numberOfOpenPosition && errors.numberOfOpenPosition}
+                value={values.numberOfOpenPosition}
               />
               <Form.Input
+                id="maxSalary"
                 type="number"
                 placeholder="Örn: 5000"
-                id="maxSalary"
                 label="Maksimum Maaş"
                 onChange={handleChange}
-                error={errors.maxSalary}
-                fluid
+                onBlur={handleBlur}
+                error={ touched.maxSalary && errors.maxSalary}
+                value={values.maxSalary}
               />
               <Form.Select
-                id="workingPlaceType"
-                onChange={(fieldName, data) =>
-                  setFieldValue("workingPlaceType", data.value)
+                id="workingPlaceTypeId"
+                onChange={(event, data) =>
+                  setFieldValue("workingPlaceTypeId", data.value)
                 }
                 onBlur={onBlur}
-                value={values.workingPlaceType}
+                value={values.workingPlaceTypeId}
                 options={workingPlaceTypeOptions}
                 label="Çalışma Yeri"
                 placeholder="Çalışma Yeri Seçiniz"
                 search
                 selection
-                error={errors.workingPlaceType}
+                error={touched.workingTimeTypeId && errors.workingPlaceTypeId}
               ></Form.Select>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width="14">
               <Form.TextArea
+                id="description"
                 type="text"
                 placeholder="Açıklama"
-                id="description"
                 label="Açıklama"
                 onChange={handleChange}
-                error={errors.description}
+                onBlur={handleBlur}
+                error={touched.description && errors.description }
+                value={values.description}
               />
             </Grid.Column>
           </Grid.Row>
         </Grid>
 
-        <Button primary type="submit" disabled={!dirty || isSubmitting} style={{marginTop:"1.5em"}}>
+        <Button primary type="submit" disabled={!dirty || isSubmitting} style={{ marginTop: "1.5em" }}>
           Yayınla
         </Button>
       </Form>

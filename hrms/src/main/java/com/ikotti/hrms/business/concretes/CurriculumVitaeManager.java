@@ -2,7 +2,6 @@ package com.ikotti.hrms.business.concretes;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.ikotti.hrms.business.abstracts.CandidateAbilityService;
 import com.ikotti.hrms.business.abstracts.CandidateEducationService;
@@ -11,9 +10,7 @@ import com.ikotti.hrms.business.abstracts.CandidateLanguageService;
 import com.ikotti.hrms.business.abstracts.CandidatePictureService;
 import com.ikotti.hrms.business.abstracts.CandidateSocialMediaService;
 import com.ikotti.hrms.business.abstracts.CurriculumVitaeService;
-import com.ikotti.hrms.core.utilities.results.DataResult;
 import com.ikotti.hrms.core.utilities.results.Result;
-import com.ikotti.hrms.core.utilities.results.SuccessDataResult;
 import com.ikotti.hrms.core.utilities.results.SuccessResult;
 import com.ikotti.hrms.dataAccess.abstracts.CandidateDao;
 import com.ikotti.hrms.entity.concretes.Candidate;

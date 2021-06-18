@@ -8,7 +8,7 @@ import com.ikotti.hrms.entity.concretes.JobPosting;
 import com.ikotti.hrms.entity.dtos.JobPostingListDto;
 
 public interface JobPostingService {
-	DataResult<List<JobPostingListDto>> getAll();
+	DataResult<List<JobPosting>> getAll();
 	
 	Result add(JobPosting jobPosting);
 	
@@ -21,4 +21,6 @@ public interface JobPostingService {
 	DataResult<List<JobPostingListDto>> getJobPostingList();
 	
 	DataResult<JobPosting> getById(int id);
+	
+	DataResult<List<JobPosting>> getByIsConfirm(Boolean isConfirm);
 }

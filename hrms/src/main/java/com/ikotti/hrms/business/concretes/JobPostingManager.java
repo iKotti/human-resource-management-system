@@ -27,8 +27,8 @@ public class JobPostingManager implements JobPostingService {
 	}
 
 	@Override
-	public DataResult<List<JobPostingListDto>> getAll() {
-		return new SuccessDataResult<List<JobPostingListDto>>(this.jobPostingDao.getJobPostingList(),"Tüm iş ilanları listelendi.");
+	public DataResult<List<JobPosting>> getAll() {
+		return new SuccessDataResult<List<JobPosting>>(jobPostingDao.findAll(),"Tüm iş ilanları listelendi.");
 	}
 
 	@Override
@@ -70,6 +70,13 @@ public class JobPostingManager implements JobPostingService {
 	public DataResult<JobPosting> getById(int id) {
 		return new SuccessDataResult<JobPosting>(jobPostingDao.getById(id));
 	}
+
+	@Override
+	public DataResult<List<JobPosting>> getByIsConfirm(Boolean isConfirm) {
+		return new SuccessDataResult<List<JobPosting>>(jobPostingDao.getByIsConfirm(isConfirm));
+	}
+	
+	
 	
 	
 }

@@ -10,6 +10,7 @@ export default function Categories() {
         <Menu.Item name="İş Arayanlar" as={Link} to="/candidates"/>
         <Menu.Item name="İş Verenler" as={Link} to="/employers"/>
         <Menu.Item name="Sistem Çalışanları" as={Link} to="/employees"/>
+        <Menu.Item name="Onay Bekleyenler" as={Link} to="/confirmjobposting"/>
       </Menu>
     </div>
   );

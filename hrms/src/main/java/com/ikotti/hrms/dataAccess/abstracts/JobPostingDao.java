@@ -10,7 +10,10 @@ import com.ikotti.hrms.entity.dtos.JobPostingListDto;
 
 public interface JobPostingDao extends JpaRepository<JobPosting, Integer>{
 	List<JobPosting> getByEmployer_CompanyName(String companyName);
+	
 	JobPosting getById(int id);
+	
+	List<JobPosting> getByIsConfirm(Boolean isConfirm);
 	
 	@Query("Select new com.ikotti.hrms.entity.dtos.JobPostingListDto"
 			+ "(j.id, e.companyName, j.jobPostingName, j.numberOfOpenPosition, j.creationDate, j.applicationDeadline, j.description) "

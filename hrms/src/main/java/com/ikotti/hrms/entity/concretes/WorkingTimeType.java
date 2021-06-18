@@ -25,7 +25,7 @@ public class WorkingTimeType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private int id;
+	private int workingTimeTypeId;
 
 	@Column(name = "working_time_name")
 	private String workingTimeName;

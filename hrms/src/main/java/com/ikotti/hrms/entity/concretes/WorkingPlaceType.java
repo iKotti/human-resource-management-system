@@ -25,7 +25,7 @@ public class WorkingPlaceType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private int id;
+	private int workingPlaceTypeId;
 
 	@Column(name = "working_place_name")
 	private String workingPlaceName;

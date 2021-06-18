@@ -16,42 +16,42 @@ export default function JobPostingDetail() {
 
   return (
     <div>
-      <div class="ui card fluid">
-        <div class="content">
-          <div class="header">
+      <div className="ui card fluid">
+        <div className="content">
+          <div className="header">
             <h2>{jobPosting.jobPostingName}</h2>
           </div>
-          <div class="meta">
-            <span class="right floated time">
-              <i class="calendar check outline icon"></i>
+          <div className="meta">
+            <span className="right floated time">
+              <i className="calendar check outline icon"></i>
               {jobPosting.creationDate}
             </span>
             <p>
-              <span class="category">
-                {jobPosting.employer.companyName} · {jobPosting.city.cityName}
+              <span className="category">
+                -
               </span>
             </p>
             <p>
-              <span class="category">
+              <span className="category">
                 Son Başvuru Tarihi : {jobPosting.applicationDeadline}
               </span>
             </p>
             <p>
-              <span class="category">
+              <span className="category">
                 Maaş : {jobPosting.minSalary} - {jobPosting.maxSalary}
               </span>
             </p>
           </div>
-          <div class="description">
+          <div className="description">
             <p>{jobPosting.description}</p>
           </div>
         </div>
-        <div class="extra content">
-          <div class="right floated author">
-            <div class="ui animated fade primary button" tabindex="0">
-              <div class="visible content">Başvur</div>
-              <div class="hidden content">
-                <i class="right arrow icon"></i>
+        <div className="extra content">
+          <div className="right floated author">
+            <div className="ui animated fade primary button" tabIndex="0">
+              <div className="visible content">Başvur</div>
+              <div className="hidden content">
+                <i className="right arrow icon"></i>
               </div>
             </div>
           </div>

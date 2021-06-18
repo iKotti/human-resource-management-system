@@ -33,6 +33,12 @@ public class CityManager implements CityService {
 	public DataResult<List<City>> getAll() {
 		return new SuccessDataResult<List<City>>(cityDao.findAll());
 	}
+
+	@Override
+	public DataResult<City> getByCityId(int id) {
+		return new SuccessDataResult<City>(cityDao.getByCityId(id));
+	}
+	
 	
 	
 	
