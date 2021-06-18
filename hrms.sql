@@ -126,10 +126,13 @@ CREATE TABLE public.job_postings
     max_salary double precision NOT NULL,
     min_salary double precision NOT NULL,
     number_of_open_position integer NOT NULL,
-    employer_id integer,
+    employer_id integer NOT NULL,
     creation_date date NOT NULL,
     is_active boolean NOT NULL,
     job_posting_name character varying(255) NOT NULL,
+    working_place_type integer,
+    working_time_type integer,
+    working_time_name integer,
     PRIMARY KEY (job_posting_id)
 );
 
@@ -174,6 +177,27 @@ CREATE TABLE public.verification_codes_employers
 (
     id integer NOT NULL,
     employer_id integer NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE public.working_place_types
+(
+    id integer NOT NULL,
+    working_place_name character varying(100) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE public.working_time_type
+(
+    id integer NOT NULL,
+    working_time_name character varying(255),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE public.working_time_types
+(
+    id integer NOT NULL,
+    working_time_name character varying(100) NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -262,14 +286,44 @@ ALTER TABLE public.job_postings
 
 
 ALTER TABLE public.job_postings
+    ADD FOREIGN KEY (working_time_name)
+    REFERENCES public.working_place_types (id)
+    NOT VALID;
+
+
+ALTER TABLE public.job_postings
     ADD FOREIGN KEY (city_id)
     REFERENCES public.cities (city_id)
     NOT VALID;
 
 
 ALTER TABLE public.job_postings
+    ADD FOREIGN KEY (working_time_name)
+    REFERENCES public.working_time_type (id)
+    NOT VALID;
+
+
+ALTER TABLE public.job_postings
+    ADD FOREIGN KEY (working_time_type)
+    REFERENCES public.working_time_type (id)
+    NOT VALID;
+
+
+ALTER TABLE public.job_postings
     ADD FOREIGN KEY (employer_id)
     REFERENCES public.employers (id)
+    NOT VALID;
+
+
+ALTER TABLE public.job_postings
+    ADD FOREIGN KEY (working_place_type)
+    REFERENCES public.working_place_types (id)
+    NOT VALID;
+
+
+ALTER TABLE public.job_postings
+    ADD FOREIGN KEY (working_time_type)
+    REFERENCES public.working_time_types (id)
     NOT VALID;
 
 

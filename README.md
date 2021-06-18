@@ -15,4 +15,5 @@
 HRMS Diagram with PostgreSQL
 <br><br>
 
-![hrms](https://user-images.githubusercontent.com/58571709/120830215-f1437c80-c566-11eb-87f6-173640244e65.png)
+![hrms](https://user-images.githubusercontent.com/58571709/122447387-5a39e400-cfac-11eb-9725-9daa21dc298a.png)
+
