@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ikotti.hrms.entity.abstacts.EmployeeConfirm;
 import com.ikotti.hrms.entity.abstacts.User;
 
@@ -37,6 +38,7 @@ public class Employee extends User{
 	@Column(name = "last_name")
 	private String lastName;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "employee")
 	private List<EmployeeConfirm> employeeConfirms;
 

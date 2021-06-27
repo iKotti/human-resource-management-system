@@ -44,4 +44,14 @@ public class EmployerManager implements EmployerService {
 		return new SuccessResult("İş veren başarıyla eklendi.");
 	}
 
+	@Override
+	public Result update(Employer employer) {
+		Employer updatedEmployer = employerDao.getById(employer.getId());
+		updatedEmployer = employer;
+		employerDao.save(updatedEmployer);
+		return new SuccessResult("İş veren başarıyla güncellendi.");
+	}
+	
+	
+
 }

@@ -12,4 +12,8 @@ public class EmployerIsVerificateByEmployee implements VerificationService{
 	public Result verificate(User user) {
 		return new SuccessResult();
 	}
+	
+	public Result verificateUpdate(User user) {
+		return new SuccessResult();
+	}
 }

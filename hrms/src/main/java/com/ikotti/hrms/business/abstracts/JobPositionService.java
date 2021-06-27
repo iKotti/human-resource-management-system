@@ -8,7 +8,7 @@ import com.ikotti.hrms.entity.concretes.JobPosition;
 
 
 public interface JobPositionService {
-	List<JobPosition> getAll();
+	DataResult<List<JobPosition>> getAll();
 	Result add(JobPosition jobPosition);
 	DataResult<JobPosition> getByTitle(String title);
 }

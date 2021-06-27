@@ -30,10 +30,14 @@ public class EmployeeController {
 		return employeeService.getAll();
 	}
 	
-	@PostMapping("add")
+	@PostMapping("/add")
 	public Result add(@RequestBody Employee employee) {
 		return employeeService.add(employee);
 	}
 	
+	@PostMapping("/update")
+	public Result update(@RequestBody Employee employee) {
+		return employeeService.update(employee);
+	}
 	
 }

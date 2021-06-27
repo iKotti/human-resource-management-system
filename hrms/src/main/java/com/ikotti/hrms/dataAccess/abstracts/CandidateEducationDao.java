@@ -8,5 +8,5 @@ import com.ikotti.hrms.entity.concretes.CandidateEducation;
 
 public interface CandidateEducationDao extends JpaRepository<CandidateEducation, Integer>{
 	List<CandidateEducation> getAllByOrderByFinishYearAsc();
-
+	List<CandidateEducation> getAllByCandidateId(int candidateId);
 }

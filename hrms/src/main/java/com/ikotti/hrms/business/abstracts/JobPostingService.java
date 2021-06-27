@@ -18,6 +18,8 @@ public interface JobPostingService {
 	
 	Result updateJobPostingActivation(int id, Boolean isActive);
 	
+	Result updateJobPostingConfirm(int id, Boolean isConfirm);
+	
 	DataResult<List<JobPostingListDto>> getJobPostingList();
 	
 	DataResult<JobPosting> getById(int id);

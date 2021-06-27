@@ -25,8 +25,8 @@ public class JobPositionManager implements JobPositionService {
 	}
 
 	@Override
-	public List<JobPosition> getAll() {
-		return jobPositionDao.findAll();
+	public DataResult<List<JobPosition>> getAll() {
+		return new SuccessDataResult<List<JobPosition>>(jobPositionDao.findAll());
 	}
 
 	@Override

@@ -34,7 +34,11 @@ public class EmployeeManager implements EmployeeService {
 		return new SuccessResult("Sistem çalışanı başarıyla eklendi.");
 	}
 
-	
-	
-	
+	@Override
+	public Result update(Employee employee) {
+		Employee updatedEmployee = employeeDao.getById(employee.getId());
+		updatedEmployee = employee;
+		employeeDao.save(updatedEmployee);
+		return new SuccessResult("Sistem çalışanı başarıyla güncellendi.");
+	}
 }

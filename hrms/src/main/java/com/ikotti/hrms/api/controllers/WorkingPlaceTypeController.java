@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ikotti.hrms.business.abstracts.WorkingPlaceTypeService;
-import com.ikotti.hrms.business.concretes.WorkingPlaceTypeManager;
 import com.ikotti.hrms.core.utilities.results.DataResult;
 import com.ikotti.hrms.core.utilities.results.Result;
 import com.ikotti.hrms.entity.concretes.WorkingPlaceType;

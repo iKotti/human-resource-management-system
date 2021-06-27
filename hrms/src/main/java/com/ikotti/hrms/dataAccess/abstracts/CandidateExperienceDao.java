@@ -8,4 +8,5 @@ import com.ikotti.hrms.entity.concretes.CandidateExperience;
 
 public interface CandidateExperienceDao extends JpaRepository<CandidateExperience, Integer> {
 	List<CandidateExperience> getAllByCandidateIdOrderByFinishDate(int candidateId);
+	List<CandidateExperience> getAllByCandidateId(int candidateId);
 }

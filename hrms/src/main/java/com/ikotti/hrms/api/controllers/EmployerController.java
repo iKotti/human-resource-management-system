@@ -34,5 +34,10 @@ public class EmployerController {
 	public Result add(@RequestBody Employer employer) {
 		return employerService.add(employer);
 	}
+	
+	@PostMapping("/update")
+	public Result update(@RequestBody Employer employer) {
+		return employerService.update(employer);
+	}
 
 }

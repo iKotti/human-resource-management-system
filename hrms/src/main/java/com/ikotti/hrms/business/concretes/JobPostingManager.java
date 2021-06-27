@@ -53,12 +53,25 @@ public class JobPostingManager implements JobPostingService {
 	public Result updateJobPostingActivation(int id, Boolean activationStatus) {
 		JobPosting updateJobPosting = jobPostingDao.getById(id);
 		if(updateJobPosting.getActivationStatus().equals(activationStatus)) {
-			return new ErrorResult("Aktiflik durumu zaten girdiğiniz gibi.");
+			return new ErrorResult("Aktiflik durumu zaten girdiğiniz gibi. Değişiklik yapılmadı.");
 		}
 		
 		updateJobPosting.setActivationStatus(activationStatus);
 		jobPostingDao.save(updateJobPosting);
 		return new SuccessResult("İş ilanının aktiflik durumu güncellendi.");
+	}
+
+	@Override
+	public Result updateJobPostingConfirm(int id, Boolean isConfirm) {
+		JobPosting jobPosting = jobPostingDao.getById(id);
+		
+		if(jobPosting.getIsConfirm().equals(isConfirm)) {
+			return new ErrorResult("Onay durumu zaten girdiğiniz gibi. Değişiklik yapılmadı.");
+		}
+		
+		jobPosting.setIsConfirm(isConfirm);
+		jobPostingDao.save(jobPosting);
+		return new SuccessResult("İş ilanının onay durumu güncellendi.");
 	}
 
 	@Override

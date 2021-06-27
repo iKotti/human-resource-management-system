@@ -52,6 +52,11 @@ public class JobPostingController {
 		return jobPostingService.updateJobPostingActivation(id, activationStatus);
 	}
 	
+	@PostMapping("/updateJobPostingConfirm")
+	public Result updateJobPostingConfirm(@RequestParam int id, Boolean isConfirm) {
+		return jobPostingService.updateJobPostingConfirm(id, isConfirm);
+	}
+	
 	@GetMapping("/getJobPostingList")
 	public DataResult<List<JobPostingListDto>> getJobPostingList() {
 		return jobPostingService.getJobPostingList();

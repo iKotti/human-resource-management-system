@@ -9,4 +9,5 @@ import com.ikotti.hrms.entity.concretes.Employer;
 public interface EmployerService {
 	DataResult<List<Employer>> getAll();
 	Result add(Employer employer);
+	Result update(Employer employer);
 }

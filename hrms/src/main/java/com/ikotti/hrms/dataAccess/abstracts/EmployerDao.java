@@ -6,4 +6,5 @@ import com.ikotti.hrms.entity.concretes.Employer;
 
 public interface EmployerDao extends JpaRepository<Employer, Integer> {
 	Employer getByEmail(String email);
+	Employer getById(int id);
 }
