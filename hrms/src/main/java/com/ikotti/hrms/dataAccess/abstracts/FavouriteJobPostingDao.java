@@ -8,4 +8,5 @@ import com.ikotti.hrms.entity.concretes.FavouriteJobPosting;
 
 public interface FavouriteJobPostingDao extends JpaRepository<FavouriteJobPosting, Integer>{
 	List<FavouriteJobPosting> getAllByCandidateId(int candidateId);
+	FavouriteJobPosting getByFavouriteId(int favouriteId);
 }

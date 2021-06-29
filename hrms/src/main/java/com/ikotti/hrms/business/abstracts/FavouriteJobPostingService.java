@@ -8,6 +8,8 @@ import com.ikotti.hrms.entity.concretes.FavouriteJobPosting;
 
 public interface FavouriteJobPostingService {
 	Result add(int candidateId, int jobPostingId);
+	
+	Result delete(int favouriteJobPostingId);
 
 	DataResult<List<FavouriteJobPosting>> getAllByCandidateId(int candidateId);
 }

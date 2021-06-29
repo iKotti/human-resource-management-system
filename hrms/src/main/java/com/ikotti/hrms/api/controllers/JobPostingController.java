@@ -71,4 +71,14 @@ public class JobPostingController {
 	public DataResult<List<JobPosting>> getByIsConfirm(@RequestParam Boolean isConfirm) {
 		return jobPostingService.getByIsConfirm(isConfirm);
 	}
+	
+	@GetMapping("/getByCity")
+	public DataResult<List<JobPosting>> getByCity(@RequestParam String cityName) {
+		return jobPostingService.getByCity_CityName(cityName);
+	}
+	
+	@GetMapping("/getByWorkingTimeType")
+	public DataResult<List<JobPosting>> getByWorkingTimeType(@RequestParam int workingTimeTypeId) {
+		return jobPostingService.getByWorkingTimeType(workingTimeTypeId);
+	}
 }

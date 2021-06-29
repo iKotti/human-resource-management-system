@@ -1,7 +1,5 @@
 package com.ikotti.hrms.business.concretes;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,13 +11,10 @@ import com.ikotti.hrms.business.abstracts.CandidateLanguageService;
 import com.ikotti.hrms.business.abstracts.CandidatePictureService;
 import com.ikotti.hrms.business.abstracts.CandidateSocialMediaService;
 import com.ikotti.hrms.business.abstracts.CurriculumVitaeService;
-import com.ikotti.hrms.core.utilities.results.DataResult;
 import com.ikotti.hrms.core.utilities.results.Result;
-import com.ikotti.hrms.core.utilities.results.SuccessDataResult;
 import com.ikotti.hrms.core.utilities.results.SuccessResult;
 import com.ikotti.hrms.dataAccess.abstracts.CandidateDao;
 import com.ikotti.hrms.entity.concretes.Candidate;
-import com.ikotti.hrms.entity.concretes.CandidateAbility;
 import com.ikotti.hrms.entity.dtos.CurriculumVitaeDto;
 
 @Service

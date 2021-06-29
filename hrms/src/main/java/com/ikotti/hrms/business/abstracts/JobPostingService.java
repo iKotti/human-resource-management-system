@@ -25,4 +25,8 @@ public interface JobPostingService {
 	DataResult<JobPosting> getById(int id);
 	
 	DataResult<List<JobPosting>> getByIsConfirm(Boolean isConfirm);
+	
+	DataResult<List<JobPosting>> getByCity_CityName(String cityName);
+	
+	DataResult<List<JobPosting>> getByWorkingTimeType(int workingTimeTypeId);
 }

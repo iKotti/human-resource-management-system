@@ -22,4 +22,8 @@ public interface JobPostingDao extends JpaRepository<JobPosting, Integer>{
 	//Select e.company_name, j.job_posting_name, j.number_of_open_position, j.creation_date, j.application_deadline
 	//from Employer e inner join JobPosting j 
 	//on e.id = j.employer_id
+	
+	List<JobPosting> getByCity_CityName(String cityName);
+	
+	List<JobPosting> getByWorkingTimeType_workingTimeTypeId(int workingTimeTypeId);
 }

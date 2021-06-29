@@ -88,6 +88,20 @@ public class JobPostingManager implements JobPostingService {
 	public DataResult<List<JobPosting>> getByIsConfirm(Boolean isConfirm) {
 		return new SuccessDataResult<List<JobPosting>>(jobPostingDao.getByIsConfirm(isConfirm));
 	}
+
+	@Override
+	public DataResult<List<JobPosting>> getByCity_CityName(String cityName) {
+		return new SuccessDataResult<List<JobPosting>>(jobPostingDao.getByCity_CityName(cityName));
+	}
+
+	@Override
+	public DataResult<List<JobPosting>> getByWorkingTimeType(int workingTimeTypeId) {
+		return new SuccessDataResult<List<JobPosting>>(jobPostingDao.getByWorkingTimeType_workingTimeTypeId(workingTimeTypeId));
+	}
+	
+	
+	
+	
 	
 	
 	

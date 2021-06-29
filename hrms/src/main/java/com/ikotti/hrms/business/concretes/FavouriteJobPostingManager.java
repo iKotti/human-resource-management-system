@@ -42,7 +42,18 @@ public class FavouriteJobPostingManager implements FavouriteJobPostingService {
 		favouriteJobPosting.setJobPosting(jobPosting);
 		favouriteJobPostingDao.save(favouriteJobPosting);
 
-		return new SuccessResult("İş ilanı başarıyla favoriye eklendi");
+		return new SuccessResult("İş ilanı başarıyla favoriye eklendi.");
+	}
+	
+	
+
+	@Override
+	public Result delete(int favouriteJobPostingId) {
+		FavouriteJobPosting favouriteJobPosting = favouriteJobPostingDao.getByFavouriteId(favouriteJobPostingId);
+
+		favouriteJobPostingDao.delete(favouriteJobPosting);
+		
+		return new SuccessResult("İş ilanı başarıyla favorilerden silindi.");
 	}
 
 	@Override
